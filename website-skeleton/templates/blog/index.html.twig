@@ -1,0 +1,29 @@
+{% extends "base.html.twig" %}
+
+{% block title %} Accueil | {{ parent() }} {% endblock %}
+
+{% block content %}
+
+    {% for article in articles %}
+    <article class="post">
+        <header>
+            <div class="title">
+                <h2>{{ article.title }}</h2>
+            </div>
+            <div class="meta">
+                <time class="published" >{{ article.dateatt | date ('d/m/Y') }} à {{ article.dateatt | date('H:i') }}</time>
+                <a class="author"><span class="name">{{ article.auteur }}</span></a>
+            </div>
+        </header>
+
+        <a class="image featured"><img src="{{ article.image }}" alt="" /></a>
+            {{ article.content }}
+        <footer>
+            <ul class="actions">
+                <li><a href="{{ path('blog_show') }}" class="button large">A lire</a></li>
+            </ul>
+        </footer>
+    </article>
+
+    {% endfor %}
+{% endblock %}
