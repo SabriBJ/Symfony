@@ -14,15 +14,25 @@
 <body class="is-preload">
 <div id="wrapper">
     <header id="header">
-        <h1><a href="index.html">Blog Symfony Incroyable</a></h1>
+        <h1><a href="{{ path('home') }}">Blog Symfony Incroyable</a></h1>
         <nav class="links">
             <ul>
-                <li><a href="#">Acceuil</a></li>
-                <li><a href="#">Login</a></li>
+                <li><a href="{{ path('home') }}">Acceuil</a></li>
+                <li><a href="{{ path('blog') }}"> Les Articles </a> </li>
+                {% if not app.user %}
+                <li><a href="{{ path('security_login') }}">Login</a></li>
+                    <li><a href="{{ path('security_registration') }}">Inscription</a></li>
+
+                {% else %}
+                    <li><a href="{{ path('blog_create') }}">Créer un article</a> </li>
+                    <li><a href="{{ path('security_logout') }}">Deconnexion</a></li>
+                {% endif %}
             </ul>
         </nav>
     </header>
 </div>
+
+
 
 {% block content %}  {% endblock %}
 

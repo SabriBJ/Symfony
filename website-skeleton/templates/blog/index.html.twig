@@ -17,13 +17,14 @@
         </header>
 
         <a class="image featured"><img src="{{ article.image }}" alt="" /></a>
-            {{ article.content }}
+            {{ article.content | raw}}
         <footer>
             <ul class="actions">
-                <li><a href="{{ path('blog_show') }}" class="button large">A lire</a></li>
+                <li><a href="{{ path('blog_show', {'id':article.id}) }}" class="button large">A lire</a></li>
             </ul>
         </footer>
     </article>
 
     {% endfor %}
+
 {% endblock %}

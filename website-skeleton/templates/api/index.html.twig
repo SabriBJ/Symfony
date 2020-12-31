@@ -1,0 +1,22 @@
+{% extends "base.html.twig" %}
+{% block title %} Article | {{ parent() }} {% endblock %}
+
+
+{% block content %}
+
+    {% for article in articles %}
+    <div id="main">
+
+        <!-- Post -->
+        <article class="post">
+            <header>
+                <div class="title">
+                    <h2>{{ article.title }}</h2>
+                </div>
+            </header>
+          {{ article.content | raw}}
+        </article>
+
+    </div>
+    {% endfor %}
+{% endblock %}
